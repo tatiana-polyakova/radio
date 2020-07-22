@@ -14,6 +14,16 @@ public class RadioTest {
     }
 
     @org.junit.jupiter.api.Test
+    void ifNewMaxStationNextIsMinStation() {
+        Radio radio = new Radio(15);
+        radio.setCurrentRadioStation(14);
+        radio.next();
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
     void ifMaxStationNextIsMinStation() {
         Radio radio = new Radio(9, 0);
         radio.next();
@@ -51,9 +61,9 @@ public class RadioTest {
 
     @org.junit.jupiter.api.Test
     void ifMaxVolumeDoNothing() {
-        Radio radio = new Radio(9, 10);
+        Radio radio = new Radio(9, 100);
         radio.volumeUp();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentSoundVolume();
         assertEquals(expected, actual);
     }
@@ -120,14 +130,14 @@ public class RadioTest {
     }
 
     @org.junit.jupiter.api.Test
-    void ifCurrentSoundVolumeEqualOrGreaterMinSoundVolumeIsCurrentSoundVolume() {
-        Radio radio = new Radio(0, 12);
+    void ifCurrentSoundVolumeEqualOrGreaterMaxSoundVolumeIsDefaultSoundVolume() {
+        Radio radio = new Radio(0, 120);
         int expected = 0;
         int actual = radio.getCurrentSoundVolume();
         assertEquals(expected, actual);
     }
     @org.junit.jupiter.api.Test
-    void ifCurrentSoundVolumeLessOrEqualMaxSoundVolumeIsCurrentSoundVolume() {
+    void ifCurrentSoundVolumeLessOrEqualMinSoundVolumeIsDefaultSoundVolume() {
         Radio radio = new Radio(0, -1);
         int expected = 0;
         int actual = radio.getCurrentSoundVolume();
