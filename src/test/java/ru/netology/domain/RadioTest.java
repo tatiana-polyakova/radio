@@ -16,7 +16,7 @@ public class RadioTest {
     @org.junit.jupiter.api.Test
     void ifNewMaxStationNextIsMinStation() {
         Radio radio = new Radio(15);
-        radio.setCurrentRadioStation(14);
+        radio.setRadioStationNumber(14);
         radio.next();
         int expected = 0;
         int actual = radio.getCurrentRadioStation();
@@ -89,7 +89,7 @@ public class RadioTest {
     @org.junit.jupiter.api.Test
     void ifLessMinStationDoNothing() {
         Radio radio = new Radio(0, 0);
-        radio.setCurrentRadioStation(-1);
+        radio.setRadioStationNumber(-1);
         int expected = 0;
         int actual = radio.getCurrentRadioStation();
         assertEquals(expected, actual);
@@ -98,7 +98,7 @@ public class RadioTest {
     @org.junit.jupiter.api.Test
     void ifMoreMaxStationDoNothing() {
         Radio radio = new Radio(9, 0);
-        radio.setCurrentRadioStation(12);
+        radio.setRadioStationNumber(12);
         int expected = 9;
         int actual = radio.getCurrentRadioStation();
         assertEquals(expected, actual);
@@ -107,7 +107,7 @@ public class RadioTest {
     @org.junit.jupiter.api.Test
     void ifMoreMinAndLessMaxStationSetStation() {
         Radio radio = new Radio(5, 0);
-        radio.setCurrentRadioStation(3);
+        radio.setRadioStationNumber(3);
         int expected = 3;
         int actual = radio.getCurrentRadioStation();
         assertEquals(expected, actual);
